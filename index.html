@@ -272,9 +272,94 @@ footer {
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes scrollPulse { 0%,100% { opacity: 0.3; transform: scaleY(1); } 50% { opacity: 0.85; transform: scaleY(1.3); } }
 
+/* ══════════  NAV BRAND (mobile only)  ══════════ */
+.nav-brand {
+  display: none;
+  font-family: 'Euphoria Script', cursive;
+  font-size: 1.4rem;
+  color: var(--earth);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* ══════════  HAMBURGER  ══════════ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  padding: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.nav-hamburger:hover { background: rgba(160,120,72,0.08); }
+.nav-hamburger span {
+  display: block; height: 1.5px;
+  background: var(--earth); border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ══════════  TABLET (641px – 900px)  ══════════ */
+@media (max-width: 900px) {
+  nav { padding: 0.7rem 1.2rem; }
+  .nav-heart { display: none; }
+  .nav-tile-label { font-size: 0.44rem; letter-spacing: 0.13em; }
+}
+
+/* ══════════  MOBILE (≤640px)  ══════════ */
 @media (max-width: 640px) {
+  nav {
+    justify-content: space-between;
+    padding: 0.55rem 1.1rem;
+    background: rgba(250,246,238,0.97);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .nav-brand { display: block; }
+  .nav-hamburger { display: flex; }
+
+  /* Collapsed menu */
+  .nav-tiles {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(250,246,238,0.99);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 20px rgba(60,40,20,0.1);
+    padding: 0.4rem 1.1rem 0.7rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-tiles.open { display: flex; }
+
+  .nav-heart { display: none; }
+  .nav-tile {
+    height: 48px; width: 100%;
+    padding: 0;
+    border-bottom: 1px solid rgba(160,128,80,0.1);
+  }
+  .nav-tile:last-of-type { border-bottom: none; }
+  .nav-tile::after { left: 36px; right: 0; bottom: 9px; }
   .nav-tile-icon { width: 15px; height: 15px; }
+  .nav-tile-label { font-size: 0.5rem; letter-spacing: 0.18em; }
+
   .section { padding: 3.5rem 1.5rem; }
+
+  /* Hero */
+  .hero-meta-sep { display: none; }
+  .hero-meta { gap: 1.4rem; }
+  .hcd-num { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
+  .hcd-sep { font-size: 1.2rem; }
 }
 </style>
 </head>
@@ -282,7 +367,8 @@ footer {
 
 <!-- ══════════════════  NAV  ══════════════════ -->
 <nav id="nav">
-  <div class="nav-tiles">
+  <a class="nav-brand" href="#">H &amp; E</a>
+  <div class="nav-tiles" id="nav-menu">
 
     <!-- Datum & Místo -->
     <a class="nav-tile" href="#datum">
@@ -370,6 +456,9 @@ footer {
     </a>
 
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ══════════════════  BACK TO TOP  ══════════════════ -->
@@ -565,6 +654,22 @@ footer {
     nav.classList.toggle('scrolled', y > 50);
     backTop.classList.toggle('visible', y > 300);
   }, {passive: true});
+
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  navMenu.querySelectorAll('.nav-tile').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   // Reveal
   const io = new IntersectionObserver(entries => {
