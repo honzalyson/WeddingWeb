@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Honza & Eliška — 8. 8. 2026</title>
+<title>Eliška & Honza — 8. 8. 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Euphoria+Script&family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,7 +88,6 @@ nav.scrolled {
   background: var(--tan);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.22s ease;
 }
 .nav-tile:hover::after { transform: scaleX(1); }
 .nav-tile:hover .nav-tile-label { color: var(--earth); }
@@ -367,7 +366,7 @@ footer {
 
 <!-- ══════════════════  NAV  ══════════════════ -->
 <nav id="nav">
-  <a class="nav-brand" href="#">H &amp; E</a>
+  <a class="nav-brand" href="#">E &amp; H</a>
   <div class="nav-tiles" id="nav-menu">
 
     <!-- Datum & Místo -->
@@ -455,6 +454,20 @@ footer {
       <span class="nav-tile-label">Dary</span>
     </a>
 
+    <span class="nav-heart">♡</span>
+
+    <!-- Další informace -->
+    <a class="nav-tile" href="#dalsi-informace">
+      <div class="nav-tile-icon-wrap">
+        <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9"/>
+          <line x1="12" y1="12" x2="12" y2="16.5"/>
+          <circle cx="12" cy="8.5" r="0.9" fill="#6a7c52" stroke="none"/>
+        </svg>
+      </div>
+      <span class="nav-tile-label">Informace</span>
+    </a>
+
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -472,7 +485,7 @@ footer {
 <section class="hero">
 
   <h1 class="hero-names">
-    Honza<span>&amp; Eliška</span>
+    Eliška<span>&amp; Honza</span>
   </h1>
 
   <div class="hero-divider">
@@ -484,7 +497,7 @@ footer {
   <div class="hero-meta">
     <div class="hero-meta-item">
       <p class="hero-meta-label">Datum</p>
-      <p class="hero-meta-value">8. srpna 2026</p>
+      <p class="hero-meta-value">8. 8. 2026</p>
     </div>
     <div class="hero-meta-sep"></div>
     <div class="hero-meta-item">
@@ -515,10 +528,6 @@ footer {
     </div>
   </div>
 
-  <!-- just the line, no "Scroll" text -->
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-  </div>
 
 </section>
 
@@ -534,7 +543,7 @@ footer {
   <div class="sec-inner">
     <div class="reveal">
       <p class="sec-eyebrow">Datum &amp; Místo</p>
-      <h2 class="sec-title">8. srpna <i>2026</i></h2>
+      <h2 class="sec-title">8. 8. <i>2026</i></h2>
     </div>
     <div class="placeholder reveal">
       <p class="placeholder-text">Zde bude datum a místo</p>
@@ -616,6 +625,24 @@ footer {
   </div>
 </section>
 
+<!-- wave divider -->
+<div class="wave-div">
+  <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,12 C280,28 560,4 840,20 C1040,30 1260,6 1440,16" fill="none" stroke="#c9a060" stroke-width="1.2" opacity="0.45"/>
+  </svg>
+</div>
+
+<!-- ══════  06 — DALŠÍ INFORMACE  ══════ -->
+<section class="section" id="dalsi-informace">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Další informace</p>
+      <h2 class="sec-title"><i>Další informace</i></h2>
+    </div>
+    <div class="placeholder reveal"><p class="placeholder-text">Zde budou další informace</p></div>
+  </div>
+</section>
+
 <!-- wave divider before footer -->
 <div class="wave-div">
   <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -625,13 +652,13 @@ footer {
 
 <!-- ══════════════════  FOOTER  ══════════════════ -->
 <footer>
-  <div class="footer-names">Honza &amp; Eliška</div>
-  <div class="footer-date">8. srpna 2026 &nbsp;·&nbsp; Trojhouse, Trojanovice</div>
+  <div class="footer-names">Eliška &amp; Honza</div>
+  <div class="footer-date">8. 8. 2026 &nbsp;·&nbsp; Trojhouse, Trojanovice</div>
 </footer>
 
 <script>
   // Countdown
-  const target = new Date('2026-08-08T13:00:00');
+  const target = new Date('2026-08-08T13:00:00+02:00'); // 13:00 CEST (UTC+2)
   function pad(n) { return String(n).padStart(2,'0'); }
   function tick() {
     const diff = target - Date.now();
