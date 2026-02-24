@@ -12,20 +12,22 @@
    PALETTE
 ══════════════════════════════════════ */
 :root {
-  --bark:    #3d2b1a;
-  --earth:   #6b4c2e;
-  --tan:     #a07848;
-  --gold:    #c9a060;
-  --straw:   #dfc898;
-  --cream:   #faf6ee;
-  --warm:    #f0e8d4;
-  --forest:  #3d5530;
-  --moss:    #6a7c52;
-  --sage:    #96a07e;
-  --fern:    #bec8a8;
-  --text:    #2a1e10;
-  --mid:     #7a6248;
-  --line:    rgba(160,128,80,0.2);
+  /* ── Core palette ── */
+  --earth:   #6b4c2e;   /* Honza */
+  --gold:    #c9a060;   /* hero heart / accents */
+  --forest:  #3d5530;   /* Eliška */
+  --text:    #2a1e10;   /* body text */
+  --cream:   #faf6ee;   /* background */
+  /* ── Aliases → core ── */
+  --bark:    var(--earth);
+  --tan:     var(--gold);
+  --straw:   var(--gold);
+  --warm:    var(--cream);
+  --moss:    var(--forest);
+  --sage:    var(--forest);
+  --fern:    var(--forest);
+  --mid:     var(--earth);
+  --line:    rgba(201,160,96,0.2);
 }
 
 html { scroll-behavior: smooth; }
@@ -217,7 +219,7 @@ nav {
   width: 100%; height: 80px;
   padding: 0 clamp(3rem, 15vw, 12rem);
   background-color: var(--cream);
-  background-image: url('img/blooms4.png');
+  background-image: url('img/blooms5.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
