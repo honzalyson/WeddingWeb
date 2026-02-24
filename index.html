@@ -33,7 +33,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Lato', sans-serif;
   background-color: var(--cream);
-  background-image: url('img/output3.jpg');
+  background-image: url('img/hero_background2.jpg');
   background-size: cover;
   background-position: center top;
   background-attachment: fixed;
@@ -57,12 +57,15 @@ nav {
 }
 
 .nav-heart {
-  font-size: 0.55rem;
+  font-size: 1.5rem;
   color: var(--tan);
   opacity: 0.6;
-  padding: 0 0.3rem;
+  padding: 0 0.5rem;
   user-select: none;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .nav-tile {
@@ -81,19 +84,17 @@ nav {
 .nav-tile:hover .nav-tile-icon { opacity: 0.9; }
 
 .nav-tile-icon-wrap {
-  flex-shrink: 0;
-  width: 32px; height: 34px;
-  display: flex; align-items: center; justify-content: center;
+  display: none;
 }
 .nav-tile-icon {
-  width: 17px; height: 17px;
+  width: 1.44rem; height: 1.44rem;
   opacity: 0.62;
   transition: opacity 0.2s;
 }
 
 .nav-tile-label {
-  font-size: 0.48rem; font-weight: 300; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--mid);
+  font-family: 'Euphoria Script', cursive;
+  font-size: 1.44rem; color: var(--mid);
   line-height: 1.3;
   transition: color 0.2s;
 }
@@ -135,6 +136,7 @@ nav {
   border-radius: 15px;
   max-width: 540px;
   width: 100%;
+  position: relative; z-index: 20;
 }
 
 /* "Honza" = zelená, "& Eliška" = hnědá */
@@ -154,7 +156,7 @@ nav {
   animation: fadeUp 0.8s 0.15s ease both;
 }
 .hero-divider-line { flex: 1; height: 1px; background: var(--straw); }
-.hero-divider-gem { color: var(--gold); opacity: 0.8; font-size: 0.75rem; }
+.hero-divider-gem { color: var(--gold); opacity: 0.8; font-size: 1.5rem; }
 
 /* Date + place — 50% bigger */
 .hero-meta {
@@ -178,7 +180,7 @@ nav {
 
 /* mini countdown — 50% bigger */
 .hero-countdown {
-  display: flex; align-items: baseline; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+  display: flex; align-items: baseline; gap: 0.5rem; justify-content: center; flex-wrap: nowrap;
   animation: fadeUp 0.8s 0.38s ease both;
 }
 .hcd-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -209,22 +211,28 @@ nav {
 }
 
 /* ══════════  WAVE DIVIDER  ══════════ */
-.wave-div { display: none; }
+.wave-div {
+  display: block;
+  width: 100%; height: 80px;
+  background-color: var(--cream);
+  background-image: url('img/blooms2.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.wave-div svg { display: none; }
 
 /* ══════════  SECTIONS  ══════════ */
-
 .section {
   position: relative; overflow: visible;
   padding: clamp(3rem, 5vw, 5rem) clamp(1.2rem, 2.5vw, 2.5rem);
-  background: var(--cream);
+  background-color: var(--cream);
 }
 
-.sec-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+.sec-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 20; }
 
 .sec-eyebrow {
-  font-size: 0.55rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase;
-  color: var(--tan); margin-bottom: 0.6rem;
-  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  display: none;
 }
 .sec-eyebrow::before, .sec-eyebrow::after {
   content: ''; display: inline-block;
@@ -311,7 +319,8 @@ footer { position: relative; }
   nav { padding: 0.7rem 1.2rem; }
   #back-top { right: 1.8rem; }
   .nav-heart { display: none; }
-  .nav-tile-label { font-size: 0.44rem; letter-spacing: 0.13em; }
+  .nav-tile-label { font-size: 1.32rem; }
+  .nav-tile-icon { width: 1.32rem; height: 1.32rem; }
 }
 
 /* ══════════  MOBILE (≤640px)  ══════════ */
@@ -349,15 +358,21 @@ footer { position: relative; }
   .nav-tile:last-of-type { border-bottom: none; }
   .nav-tile::after { left: 36px; right: 0; bottom: 9px; }
   .nav-tile-icon { width: 15px; height: 15px; }
-  .nav-tile-label { font-size: 0.5rem; letter-spacing: 0.18em; }
+  .nav-tile-label { font-size: 1.5rem; }
+  .nav-tile-icon { width: 1.5rem; height: 1.5rem; }
 
   .section { padding: 3.5rem 1.5rem; }
 
   /* Hero */
+  .hero-content { padding: 2rem 1.5rem; }
   .hero-meta-sep { display: none; }
   .hero-meta { gap: 1.4rem; }
-  .hcd-num { font-size: clamp(1.8rem, 7.5vw, 2.4rem); }
-  .hcd-sep { font-size: 1.2rem; }
+  .hero-countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; }
+  .hcd-sep { display: none; }
+  .hcd-item { border-right: 1px solid rgba(223,200,152,0.4); padding: 0.2rem 0.3rem; }
+  .hcd-item:last-child { border-right: none; }
+  .hcd-num { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+  .hcd-label { font-size: 0.5rem; letter-spacing: 0.12em; }
 }
 </style>
 </head>
@@ -493,7 +508,7 @@ footer { position: relative; }
 
     <div class="hero-divider">
       <div class="hero-divider-line"></div>
-      <span class="hero-divider-gem">✦</span>
+      <span class="hero-divider-gem">♡</span>
       <div class="hero-divider-line"></div>
     </div>
 
@@ -535,12 +550,6 @@ footer { position: relative; }
 
 </section>
 
-<!-- wave divider (stroke only) -->
-<div class="wave-div">
-  <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,16 C240,32 480,0 720,16 C960,32 1200,0 1440,16" fill="none" stroke="#c9a060" stroke-width="1.2" opacity="0.45"/>
-  </svg>
-</div>
 
 <!-- ══════  01 — DATUM & MÍSTO  ══════ -->
 <section class="section" id="datum">
@@ -647,12 +656,6 @@ footer { position: relative; }
   </div>
 </section>
 
-<!-- wave divider before footer -->
-<div class="wave-div">
-  <svg viewBox="0 0 1440 32" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,18 C360,4 720,28 1080,12 C1260,4 1380,22 1440,16" fill="none" stroke="#c9a060" stroke-width="1.2" opacity="0.45"/>
-  </svg>
-</div>
 
 <!-- ══════════════════  FOOTER  ══════════════════ -->
 <footer>
