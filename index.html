@@ -171,7 +171,7 @@ nav {
 }
 .hero-meta-item { text-align: center; }
 .hero-meta-label {
-  font-size: 0.78rem; font-weight: 300; letter-spacing: 0.32em; text-transform: uppercase;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--tan); margin-bottom: 0.3rem;
 }
 .hero-meta-value {
@@ -241,7 +241,7 @@ nav {
 /* ══════════  SECTIONS  ══════════ */
 .section {
   position: relative; overflow: visible;
-  padding: clamp(3rem, 5vw, 5rem) clamp(1.2rem, 2.5vw, 2.5rem);
+  padding: clamp(1.2rem, 2.5vw, 2.5rem);
   background-color: var(--cream);
 }
 
@@ -323,6 +323,117 @@ nav {
   color: var(--earth); font-weight: 600; text-decoration: none;
 }
 .venue-link:hover { text-decoration: underline; }
+.subsec-title {
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--tan);
+  margin-top: 2rem; margin-bottom: 0.3rem;
+}
+.subsec-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem; line-height: 1.8; color: var(--text);
+}
+.subsec-note {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem; line-height: 1.8; color: var(--text);
+  margin-top: 1.5rem;
+  border-left: 3px solid var(--gold);
+  padding: 0.4rem 0.8rem;
+  background: rgba(201,160,96,0.08);
+  border-radius: 0 4px 4px 0;
+}
+.subsec-list {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem; line-height: 1.8; color: var(--text);
+  padding-left: 1.2rem; margin: 0;
+}
+
+/* ══════════  PROGRAM TIMELINE  ══════════ */
+.timeline {
+  position: relative;
+  margin-top: 1.8rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%; /* true center of the section */
+  top: 0; bottom: 0;
+  width: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 1.6rem;
+  padding-left: calc(50% + 3rem); /* center + right gap → content on right half */
+}
+.tl-item:last-child { margin-bottom: 0; }
+
+/* main event (has time + connector) */
+.tl-item.tl-main .tl-time {
+  position: absolute;
+  left: 0;
+  right: calc(50% + 3rem); /* right edge ends 3rem left of center line */
+  text-align: right;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--earth);
+  line-height: 1.6rem;
+  padding-top: 0.55rem; /* vertically centre with the label box */
+}
+.tl-item.tl-main .tl-body {
+  position: relative;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(201,160,96,0.45);
+  border-radius: 4px;
+  background: rgba(201,160,96,0.06);
+  display: inline-block;
+  max-width: 100%;
+}
+/* horizontal connector from center line to box left edge */
+.tl-item.tl-main .tl-body::before {
+  content: '';
+  position: absolute;
+  left: -3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+/* dot on the center line */
+.tl-item.tl-main::before {
+  content: '';
+  position: absolute;
+  left: calc(50% - 3px); /* center 7px dot on the 50% center line */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+/* between event (text only, indented) */
+.tl-item.tl-between {
+  padding-left: calc(50% + 3.5rem); /* overrides tl-item, adds 0.5rem visual indent */
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.tl-label {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.6;
+}
 
 /* ══════════  FOOTER  ══════════ */
 footer {
@@ -433,7 +544,7 @@ footer { position: relative; }
   .nav-tile-label { font-size: 1.5rem; }
   .nav-tile-icon { width: 1.5rem; height: 1.5rem; }
 
-  .section { padding: 3.5rem 1.5rem; }
+  .section { padding: 1.5rem; }
 
   /* Hero */
   .hero-content { padding: 2rem 1.5rem; }
@@ -455,7 +566,7 @@ footer { position: relative; }
   <a class="nav-brand" href="#">E &amp; H</a>
   <div class="nav-tiles" id="nav-menu">
 
-    <!-- Datum & Místo -->
+    <!-- Doprava -->
     <a class="nav-tile" href="#datum">
       <div class="nav-tile-icon-wrap">
         <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -467,12 +578,12 @@ footer { position: relative; }
           <line x1="16" y1="13" x2="17.5" y2="17" stroke="#96a07e" stroke-width="1.1"/>
         </svg>
       </div>
-      <span class="nav-tile-label">Datum &amp; Místo</span>
+      <span class="nav-tile-label">Doprava</span>
     </a>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
-    <!-- Ubytování & Doprava -->
+    <!-- Ubytování -->
     <a class="nav-tile" href="#ubytovani">
       <div class="nav-tile-icon-wrap">
         <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -484,7 +595,7 @@ footer { position: relative; }
           <rect x="11" y="16.5" width="2" height="2.5"/>
         </svg>
       </div>
-      <span class="nav-tile-label">Ubytování &amp; Doprava</span>
+      <span class="nav-tile-label">Ubytování</span>
     </a>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -623,12 +734,12 @@ footer { position: relative; }
 </section>
 
 
-<!-- ══════  01 — DATUM & MÍSTO  ══════ -->
+<!-- ══════  01 — DOPRAVA  ══════ -->
 <section class="section" id="datum">
   <div class="sec-inner">
     <div class="reveal">
-      <p class="sec-eyebrow">Datum &amp; Místo</p>
-      <h2 class="sec-title">Datum <i>&amp; Místo</i></h2>
+      <p class="sec-eyebrow">Doprava</p>
+      <h2 class="sec-title"><i>Doprava</i></h2>
     </div>
     <div class="datum-cols reveal">
 
@@ -647,7 +758,7 @@ footer { position: relative; }
           <a href="https://www.google.com/maps/dir/?api=1&destination=49.5283788,18.2508911&destination_place_id=ChIJ0_Z6QQ6LE0cRHpN4yn0O-So" target="_blank" rel="noopener" class="map-nav-link">
             <img src="img/google_maps.png" alt="Navigovat s Google Maps">
           </a>
-          <a href="https://mapy.com/s/jocacemece" target="_blank" rel="noopener" class="map-nav-link">
+          <a href="https://mapy.com/s/husupepuvu" target="_blank" rel="noopener" class="map-nav-link">
             <img src="img/mapy_com.png" alt="Navigovat s Mapy.com">
           </a>
         </div>
@@ -657,7 +768,7 @@ footer { position: relative; }
       <div class="datum-col-map">
         <div class="datum-map">
           <iframe
-            src="https://mapy.com/s/jocacemece"
+            src="https://mapy.com/s/pegorabopo"
             allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             title="Trojhouse, Trojanovice"></iframe>
@@ -665,21 +776,44 @@ footer { position: relative; }
       </div>
 
     </div>
+
+    <div class="reveal">
+      <h3 class="subsec-title">Parkování</h3>
+      <ul class="subsec-list">
+        <li>Možnost parkování přímo v areálu</li>
+        <li>Místo pro parkování bude označeno cedulí</li>
+      </ul>
+
+      <h3 class="subsec-title">Odvoz</h3>
+      <ul class="subsec-list">
+        <li>Možnost využití odvozu na místo svatby a později i zpět</li>
+      </ul>
+      <p class="subsec-note">Prosíme, dejte vědět, kdo přijede vlastním autem, a kdo naopak využije odvoz, z důvodu zajištění dostatku kapacity parkovacích míst a řidičů.</p>
+    </div>
   </div>
 </section>
 
 <!-- wave divider -->
 <div class="wave-div"><img src="img/blooms8.png" alt=""></div>
 
-<!-- ══════  02 — UBYTOVÁNÍ & DOPRAVA  ══════ -->
+<!-- ══════  02 — UBYTOVÁNÍ  ══════ -->
 <section class="section" id="ubytovani">
   <div class="sec-inner">
     <div class="reveal">
-      <p class="sec-eyebrow">Ubytování &amp; Doprava</p>
-      <h2 class="sec-title">Ubytování <i>&amp; Doprava</i></h2>
+      <p class="sec-eyebrow">Ubytování</p>
+      <h2 class="sec-title"><i>Ubytování</i></h2>
     </div>
-    <div class="placeholder reveal">
-      <p class="placeholder-text">Zde bude ubytování a doprava</p>
+    <div class="reveal">
+      <p class="subsec-text">Budeme rádi, když využijeme kapacitu areálu naplno a přespíte. Nejen, že se zjednoduší odvoz na svatbu/ze svatby, ale taky nemusíte šetřit energii na cestu domů a můžete ji využít třeba na parketu.</p>
+
+      <h3 class="subsec-title">Možnosti přespání</h3>
+      <ul class="subsec-list">
+        <li>V pokoji na posteli (až 20 lidí - cca 4 lidi/pokoj)</li>
+        <li>V pokoji na matraci/karimatce</li>
+        <li>Ve stanu (zadní část areálu, dál od hluku)</li>
+        <li>V autě či sauně 😄</li>
+      </ul>
+      <p class="subsec-note">Prosíme, dejte vědět, kdo přespí a jakou možnost přespání akceptuje, z důvodu plánování obsazenosti pokojů a dalších prostor.</p>
     </div>
   </div>
 </section>
@@ -694,7 +828,44 @@ footer { position: relative; }
       <p class="sec-eyebrow">Program</p>
       <h2 class="sec-title"><i>Program</i></h2>
     </div>
-    <div class="placeholder reveal"><p class="placeholder-text">Zde bude program</p></div>
+    <div class="reveal">
+      <div class="timeline">
+
+        <div class="tl-item tl-main">
+          <span class="tl-time">12:00</span>
+          <div class="tl-body"><span class="tl-label">Příjezd hostů</span></div>
+        </div>
+
+        <div class="tl-item tl-main">
+          <span class="tl-time">13:00</span>
+          <div class="tl-body"><span class="tl-label">Svatební obřad</span></div>
+        </div>
+
+        <div class="tl-item tl-main">
+          <span class="tl-time">14:00</span>
+          <div class="tl-body"><span class="tl-label">Oběd</span></div>
+        </div>
+
+        <div class="tl-item tl-between">Odpočinek po obědě</div>
+
+        <div class="tl-item tl-main">
+          <span class="tl-time">15:00</span>
+          <div class="tl-body"><span class="tl-label">Krájení dortu</span></div>
+        </div>
+
+        <div class="tl-item tl-between">Zábava</div>
+
+        <div class="tl-item tl-main">
+          <span class="tl-time">18:00</span>
+          <div class="tl-body"><span class="tl-label">Večerní raut</span></div>
+        </div>
+
+        <div class="tl-item tl-between">Zábava a plný taneční parket</div>
+
+        <div class="tl-item tl-between">Údiv, jak ten den rychle uběhl</div>
+
+      </div>
+    </div>
   </div>
 </section>
 
