@@ -325,9 +325,10 @@ footer { position: relative; }
   background: var(--earth); border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.2s ease;
   transform-origin: center;
+  will-change: transform, opacity;
 }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* ══════════  TABLET (901px – 1150px)  ══════════ */
@@ -435,7 +436,7 @@ footer { position: relative; }
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
-    <!-- Dress Code -->
+    <!-- Dress code -->
     <a class="nav-tile" href="#dresscode">
       <div class="nav-tile-icon-wrap">
         <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -446,7 +447,7 @@ footer { position: relative; }
           <circle cx="12" cy="14.5" r="0.8" fill="#96a07e" stroke="none"/>
         </svg>
       </div>
-      <span class="nav-tile-label">Dress Code</span>
+      <span class="nav-tile-label">Dress code</span>
     </a>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -572,7 +573,7 @@ footer { position: relative; }
   <div class="sec-inner">
     <div class="reveal">
       <p class="sec-eyebrow">Datum &amp; Místo</p>
-      <h2 class="sec-title">8. 8. <i>2026</i></h2>
+      <h2 class="sec-title">Datum <i>&amp; Místo</i></h2>
     </div>
     <div class="placeholder reveal">
       <p class="placeholder-text">Zde bude datum a místo</p>
@@ -602,8 +603,8 @@ footer { position: relative; }
 <section class="section" id="dresscode">
   <div class="sec-inner">
     <div class="reveal">
-      <p class="sec-eyebrow">Dress Code</p>
-      <h2 class="sec-title"><i>Dress Code</i></h2>
+      <p class="sec-eyebrow">Dress code</p>
+      <h2 class="sec-title"><i>Dress code</i></h2>
     </div>
     <div class="placeholder reveal"><p class="placeholder-text">Zde bude dress code</p></div>
   </div>
