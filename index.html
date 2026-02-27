@@ -272,6 +272,57 @@ nav {
   text-transform: uppercase; color: var(--tan); font-style: italic;
 }
 
+/* ══════════  DATUM & MÍSTO  ══════════ */
+.datum-cols {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+.datum-col-info {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+.datum-col-info .map-nav-links {
+  margin-top: auto;
+}
+.datum-col-map {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.datum-map {
+  flex: 1;
+  min-height: 220px;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(42,30,16,0.1);
+}
+.map-nav-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 0.75rem;
+}
+.map-nav-link {
+  display: inline-flex;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.map-nav-link:hover { opacity: 0.8; transform: scale(1.08); }
+.map-nav-link img { width: 2.25rem; height: 2.25rem; object-fit: contain; display: block; }
+.datum-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+.datum-address {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem; line-height: 1.8; color: var(--text);
+}
+.venue-link {
+  color: var(--earth); font-weight: 600; text-decoration: none;
+}
+.venue-link:hover { text-decoration: underline; }
+
 /* ══════════  FOOTER  ══════════ */
 footer {
   background: var(--bark); padding: 3rem 2.5rem;
@@ -343,6 +394,9 @@ footer { position: relative; }
     background-attachment: scroll;
   }
   .center-panel { box-shadow: none; }
+  .datum-cols { flex-direction: column; }
+  .datum-map { min-height: 220px; }
+
   #back-top { right: 1.8rem; }
   nav {
     justify-content: space-between;
@@ -417,6 +471,23 @@ footer { position: relative; }
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
+    <!-- Ubytování & Doprava -->
+    <a class="nav-tile" href="#ubytovani">
+      <div class="nav-tile-icon-wrap">
+        <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="2,19 9,7 16,19"/>
+          <polyline points="10,19 16.5,10 23,19"/>
+          <path d="M9 7 C9 7 8 9 10 10 C11 9 9 7 9 7Z" stroke="none" fill="#6a7c52" opacity="0.35"/>
+          <rect x="9.5" y="14.5" width="5" height="4.5" rx="0.5"/>
+          <polyline points="9,14.5 12,12 15,14.5"/>
+          <rect x="11" y="16.5" width="2" height="2.5"/>
+        </svg>
+      </div>
+      <span class="nav-tile-label">Ubytování &amp; Doprava</span>
+    </a>
+
+    <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+
     <!-- Program -->
     <a class="nav-tile" href="#program">
       <div class="nav-tile-icon-wrap">
@@ -448,23 +519,6 @@ footer { position: relative; }
         </svg>
       </div>
       <span class="nav-tile-label">Dress code</span>
-    </a>
-
-    <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
-
-    <!-- Ubytování & Doprava -->
-    <a class="nav-tile" href="#ubytovani">
-      <div class="nav-tile-icon-wrap">
-        <svg class="nav-tile-icon" viewBox="0 0 24 24" fill="none" stroke="#6a7c52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-          <polyline points="2,19 9,7 16,19"/>
-          <polyline points="10,19 16.5,10 23,19"/>
-          <path d="M9 7 C9 7 8 9 10 10 C11 9 9 7 9 7Z" stroke="none" fill="#6a7c52" opacity="0.35"/>
-          <rect x="9.5" y="14.5" width="5" height="4.5" rx="0.5"/>
-          <polyline points="9,14.5 12,12 15,14.5"/>
-          <rect x="11" y="16.5" width="2" height="2.5"/>
-        </svg>
-      </div>
-      <span class="nav-tile-label">Ubytování &amp; Doprava</span>
     </a>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -575,8 +629,40 @@ footer { position: relative; }
       <p class="sec-eyebrow">Datum &amp; Místo</p>
       <h2 class="sec-title">Datum <i>&amp; Místo</i></h2>
     </div>
-    <div class="placeholder reveal">
-      <p class="placeholder-text">Zde bude datum a místo</p>
+    <div class="datum-cols reveal">
+
+      <!-- Info: address + nav icons -->
+      <div class="datum-col-info">
+        <p class="datum-address">
+          Trojhouse<br>
+          Trojanovice 261<br>
+          744 01 Trojanovice<br>
+          <a href="https://www.trojhouse.cz" target="_blank" rel="noopener" class="venue-link">trojhouse.cz</a>
+        </p>
+        <div class="map-nav-links">
+          <a href="https://ul.waze.com/ul?place=ChIJ0_Z6QQ6LE0cRHpN4yn0O-So&ll=49.52837880%2C18.25089110&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" rel="noopener" class="map-nav-link">
+            <img src="img/waze.png" alt="Navigovat s Waze">
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=49.5283788,18.2508911&destination_place_id=ChIJ0_Z6QQ6LE0cRHpN4yn0O-So" target="_blank" rel="noopener" class="map-nav-link">
+            <img src="img/google_maps.png" alt="Navigovat s Google Maps">
+          </a>
+          <a href="https://mapy.com/directions?mode=car&to=49.5283788,18.2508911" target="_blank" rel="noopener" class="map-nav-link">
+            <img src="img/mapy_com.png" alt="Navigovat s Mapy.com">
+          </a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="datum-col-map">
+        <div class="datum-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d865!2d18.2508911!3d49.5283788!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47138b0e417af6d3%3A0x2af90e7dca78931e!2sTrojhouse.cz!5e0!3m2!1scs!2scz!4v1708000000000!5m2!1scs!2scz"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Trojhouse, Trojanovice"></iframe>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -584,37 +670,7 @@ footer { position: relative; }
 <!-- wave divider -->
 <div class="wave-div"><img src="img/blooms8.png" alt=""></div>
 
-<!-- ══════  02 — PROGRAM  ══════ -->
-<section class="section" id="program">
-  <div class="sec-inner">
-    <div class="reveal">
-      <p class="sec-eyebrow">Program</p>
-      <h2 class="sec-title"><i>Program</i> dne</h2>
-    </div>
-    <div class="placeholder reveal"><p class="placeholder-text">Zde bude program</p></div>
-  </div>
-</section>
-
-<!-- wave divider -->
-<div class="wave-div"><img src="img/blooms8.png" alt="">
-</div>
-
-<!-- ══════  03 — DRESS CODE  ══════ -->
-<section class="section" id="dresscode">
-  <div class="sec-inner">
-    <div class="reveal">
-      <p class="sec-eyebrow">Dress code</p>
-      <h2 class="sec-title"><i>Dress code</i></h2>
-    </div>
-    <div class="placeholder reveal"><p class="placeholder-text">Zde bude dress code</p></div>
-  </div>
-</section>
-
-<!-- wave divider -->
-<div class="wave-div"><img src="img/blooms8.png" alt="">
-</div>
-
-<!-- ══════  04 — UBYTOVÁNÍ & DOPRAVA  ══════ -->
+<!-- ══════  02 — UBYTOVÁNÍ & DOPRAVA  ══════ -->
 <section class="section" id="ubytovani">
   <div class="sec-inner">
     <div class="reveal">
@@ -628,8 +684,35 @@ footer { position: relative; }
 </section>
 
 <!-- wave divider -->
-<div class="wave-div"><img src="img/blooms8.png" alt="">
-</div>
+<div class="wave-div"><img src="img/blooms8.png" alt=""></div>
+
+<!-- ══════  03 — PROGRAM  ══════ -->
+<section class="section" id="program">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Program</p>
+      <h2 class="sec-title"><i>Program</i></h2>
+    </div>
+    <div class="placeholder reveal"><p class="placeholder-text">Zde bude program</p></div>
+  </div>
+</section>
+
+<!-- wave divider -->
+<div class="wave-div"><img src="img/blooms8.png" alt=""></div>
+
+<!-- ══════  04 — DRESS CODE  ══════ -->
+<section class="section" id="dresscode">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-eyebrow">Dress code</p>
+      <h2 class="sec-title"><i>Dress code</i></h2>
+    </div>
+    <div class="placeholder reveal"><p class="placeholder-text">Zde bude dress code</p></div>
+  </div>
+</section>
+
+<!-- wave divider -->
+<div class="wave-div"><img src="img/blooms8.png" alt=""></div>
 
 <!-- ══════  05 — DARY  ══════ -->
 <section class="section" id="dary">
