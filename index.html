@@ -378,6 +378,8 @@ nav {
 .tl-connector-cell {
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 /* connector line — starts at circle center, 1px tall */
 .tl-connector {
@@ -407,13 +409,14 @@ nav {
   margin-bottom: 10px;
 }
 
-/* circle marker for main events — 13px solid gold */
+/* circle marker for main events — 10px solid gold */
 .tl-node-circle::after {
   content: '';
   position: absolute;
-  width: 13px; height: 13px;
+  width: 11px; height: 11px;
   border-radius: 50%;
   background: var(--gold);
+  box-shadow: 0 0 0 2px var(--cream);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
