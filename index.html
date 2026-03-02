@@ -355,7 +355,7 @@ nav {
 /* ══════════  PROGRAM TIMELINE  ══════════ */
 .timeline {
   display: grid;
-  grid-template-columns: max-content auto max-content;
+  grid-template-columns: max-content auto auto max-content;
   row-gap: 0.4rem;
   position: relative;
   margin-top: 1.8rem;
@@ -365,8 +365,18 @@ nav {
   margin-right: auto;
 }
 
-/* vertical line drawn by each node cell's ::before, clipped by timeline overflow:hidden */
-.tl-node-cell::before {
+/* vertical line: first circle center → last circle center */
+/* all circle nodes: line from above, terminating at circle center */
+.tl-node-right::before {
+  content: '';
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  width: 3px;
+  top: -10000px; bottom: 50%;
+  background: rgba(201,160,96,0.45);
+}
+/* between-cells that precede a circle: pass line through */
+.tl-node-cell:not(.tl-node-right):has(~ .tl-node-right)::before {
   content: '';
   position: absolute;
   left: 50%; transform: translateX(-50%);
@@ -375,24 +385,23 @@ nav {
   background: rgba(201,160,96,0.45);
 }
 
-/* left / right event columns — flex row so the connector can grow */
-.tl-event-cell {
+/* connector column — stretches between circle and body */
+.tl-connector-cell {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  padding: 0.5rem 0;
 }
-/* event box content left-aligned */
-.tl-body { text-align: left; }
-
-/* adaptive connector — flex: 1 fills the entire gap between box and dot */
+/* connector line — starts at circle center, 1px tall */
 .tl-connector {
   flex: 1;
-  height: 3px;
+  height: 1px;
   background: rgba(201,160,96,0.45);
-  align-self: center;
-  min-width: 0.5rem;
+  min-width: 2.5rem;
+  margin-left: -6.5px;
 }
+/* body column */
+.tl-body-cell { padding: 0.5rem 0; }
+/* event box content left-aligned */
+.tl-body { text-align: left; }
 
 /* centre column: dot + vertical line */
 .tl-node-cell {
@@ -402,18 +411,16 @@ nav {
   padding: 0.5rem 0;
   position: relative;
   z-index: 1;
-  min-width: 21px;
+  min-width: 13px;
 }
 
-/* circle marker for main events — 21px, gold stroke, cream fill */
+/* circle marker for main events — 13px solid gold */
 .tl-node-right::after {
   content: '';
   position: absolute;
-  width: 21px; height: 21px;
+  width: 13px; height: 13px;
   border-radius: 50%;
-  border: 3px solid var(--gold);
-  background: var(--cream);
-  box-shadow: 0 0 0 2px var(--cream);
+  background: var(--gold);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -891,76 +898,70 @@ footer { position: relative; }
         <!-- 12:00 Příjezd hostů -->
         <div class="tl-time-cell"><span class="tl-time">12:00</span></div>
         <div class="tl-node-cell tl-node-right"></div>
-        <div class="tl-event-cell tl-right-cell">
-          <span class="tl-connector"></span>
-          <div class="tl-body">
+        <div class="tl-connector-cell"><span class="tl-connector"></span></div>
+        <div class="tl-body-cell"><div class="tl-body">
             <span class="tl-label">Příjezd hostů</span>
             <p class="tl-desc">Zde bude krátký popis</p>
-          </div>
-        </div>
+          </div></div>
 
         <!-- 13:00 Svatební obřad -->
         <div class="tl-time-cell"><span class="tl-time">13:00</span></div>
         <div class="tl-node-cell tl-node-right"></div>
-        <div class="tl-event-cell tl-right-cell">
-          <span class="tl-connector"></span>
-          <div class="tl-body">
+        <div class="tl-connector-cell"><span class="tl-connector"></span></div>
+        <div class="tl-body-cell"><div class="tl-body">
             <span class="tl-label">Svatební obřad</span>
             <p class="tl-desc">Zde bude krátký popis</p>
-          </div>
-        </div>
+          </div></div>
 
         <!-- 14:00 Oběd -->
         <div class="tl-time-cell"><span class="tl-time">14:00</span></div>
         <div class="tl-node-cell tl-node-right"></div>
-        <div class="tl-event-cell tl-right-cell">
-          <span class="tl-connector"></span>
-          <div class="tl-body">
+        <div class="tl-connector-cell"><span class="tl-connector"></span></div>
+        <div class="tl-body-cell"><div class="tl-body">
             <span class="tl-label">Oběd</span>
             <p class="tl-desc">Zde bude krátký popis</p>
-          </div>
-        </div>
+          </div></div>
 
         <!-- between: Odpočinek po obědě -->
         <div class="tl-time-cell"></div>
         <div class="tl-node-cell"></div>
+        <div class="tl-connector-cell"></div>
         <div class="tl-between-cell">Odpočinek po obědě</div>
 
         <!-- 15:00 Krájení dortu -->
         <div class="tl-time-cell"><span class="tl-time">15:00</span></div>
         <div class="tl-node-cell tl-node-right"></div>
-        <div class="tl-event-cell tl-right-cell">
-          <span class="tl-connector"></span>
-          <div class="tl-body">
+        <div class="tl-connector-cell"><span class="tl-connector"></span></div>
+        <div class="tl-body-cell"><div class="tl-body">
             <span class="tl-label">Krájení dortu</span>
             <p class="tl-desc">Zde bude krátký popis</p>
-          </div>
-        </div>
+          </div></div>
 
         <!-- between: Zábava -->
         <div class="tl-time-cell"></div>
         <div class="tl-node-cell"></div>
+        <div class="tl-connector-cell"></div>
         <div class="tl-between-cell">Zábava</div>
 
         <!-- 18:00 Večerní raut -->
         <div class="tl-time-cell"><span class="tl-time">18:00</span></div>
         <div class="tl-node-cell tl-node-right"></div>
-        <div class="tl-event-cell tl-right-cell">
-          <span class="tl-connector"></span>
-          <div class="tl-body">
+        <div class="tl-connector-cell"><span class="tl-connector"></span></div>
+        <div class="tl-body-cell"><div class="tl-body">
             <span class="tl-label">Večerní raut</span>
             <p class="tl-desc">Zde bude krátký popis</p>
-          </div>
-        </div>
+          </div></div>
 
         <!-- between: Zábava a plný taneční parket -->
         <div class="tl-time-cell"></div>
         <div class="tl-node-cell"></div>
+        <div class="tl-connector-cell"></div>
         <div class="tl-between-cell">Zábava a plný taneční parket</div>
 
         <!-- between: Údiv, jak ten den rychle uběhl -->
         <div class="tl-time-cell"></div>
         <div class="tl-node-cell"></div>
+        <div class="tl-connector-cell"></div>
         <div class="tl-between-cell">Údiv, jak ten den rychle uběhl</div>
 
       </div>
