@@ -250,6 +250,7 @@ nav {
 }
 
 .sec-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 20; }
+#program .program-center { max-width: 430px; margin: 0 auto; }
 
 .sec-eyebrow {
   display: none;
@@ -355,14 +356,12 @@ nav {
 /* ══════════  PROGRAM TIMELINE  ══════════ */
 .timeline {
   display: grid;
-  grid-template-columns: max-content auto auto max-content;
+  grid-template-columns: max-content max-content 1fr max-content;
   row-gap: 0.4rem;
   position: relative;
   margin-top: 1.8rem;
   overflow: hidden;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 /* vertical line: first circle center → last circle center */
@@ -395,7 +394,6 @@ nav {
   flex: 1;
   height: 1px;
   background: rgba(201,160,96,0.45);
-  min-width: 2.5rem;
   margin-left: -6.5px;
 }
 /* body column */
@@ -888,6 +886,7 @@ footer { position: relative; }
 <!-- ══════  03 — PROGRAM  ══════ -->
 <section class="section" id="program">
   <div class="sec-inner">
+    <div class="program-center">
     <div class="reveal">
       <p class="sec-eyebrow">Program</p>
       <h2 class="sec-title"><i>Program</i></h2>
@@ -965,6 +964,7 @@ footer { position: relative; }
         <div class="tl-between-cell">Údiv, jak ten den rychle uběhl</div>
 
       </div>
+    </div>
     </div>
   </div>
 </section>
