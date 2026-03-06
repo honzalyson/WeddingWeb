@@ -122,22 +122,42 @@ nav {
 #back-top svg { color: var(--earth); }
 
 /* ══════════  HERO  ══════════ */
+.hero-rule {
+  border: none;
+  border-top: 1px solid var(--gold);
+  margin: 0;
+  width: 100%;
+}
 .hero {
-  min-height: 70vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
-  padding: 5.5rem 2rem 2.5rem;
-  background-image: url('img/hero_background3.jpg');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
+  padding: 0 2rem;
   position: relative;
+}
+.hero-top, .hero-bottom {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  line-height: 0;
+  max-width: 540px;
+}
+.hero-top {
+  padding-top: calc(36px + 1.4rem);
+  margin-bottom: 0.2rem;
+}
+.hero-bottom {
+  margin-top: 0.2rem;
+}
+.hero-top img, .hero-bottom img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 .hero-content {
   background: rgba(250,246,238,0.8);
   backdrop-filter: blur(8px);
-  padding: 3rem 3.5rem;
+  padding: 0rem 3.5rem;
   border-radius: 15px;
   max-width: 540px;
   width: 100%;
@@ -151,6 +171,7 @@ nav {
   line-height: 0.95;
   color: var(--forest);
   animation: fadeUp 0.8s ease both;
+  margin-top: 1.8rem;
 }
 .hero-names span { display: block; color: var(--earth); }
 
@@ -188,6 +209,7 @@ nav {
 .hero-countdown {
   display: flex; align-items: baseline; gap: 0.5rem; justify-content: center; flex-wrap: nowrap;
   animation: fadeUp 0.8s 0.38s ease both;
+  margin-bottom: 1.8rem;
 }
 .hcd-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .hcd-num {
@@ -634,7 +656,7 @@ footer { position: relative; }
   .section { padding: 1.5rem; }
 
   /* Hero */
-  .hero-content { padding: 2rem 1.5rem; }
+  .hero-content { padding: 0 1.5rem; }
   .hero-meta-sep { display: none; }
   .hero-meta { gap: 1.4rem; }
   .hero-countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; }
@@ -772,6 +794,9 @@ footer { position: relative; }
 
   <div class="hero-content">
 
+    <div class="hero-top"><img src="img/hero_top.png" alt=""></div>
+    <hr class="hero-rule">
+
     <h1 class="hero-names">
       Eliška<span>&amp; Honza</span>
     </h1>
@@ -815,6 +840,9 @@ footer { position: relative; }
         <span class="hcd-label">Sekund</span>
       </div>
     </div>
+
+    <hr class="hero-rule">
+    <div class="hero-bottom"><img src="img/hero_bottom.png" alt=""></div>
 
   </div><!-- /.hero-content -->
 
