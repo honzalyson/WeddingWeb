@@ -47,7 +47,7 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; justify-content: flex-end; align-items: center;
-  padding: 0.7rem 1.6rem;
+  padding: 0.35rem 1.6rem;
   background: rgba(250,246,238,0.97);
   backdrop-filter: blur(14px);
   box-shadow: 0 1px 0 var(--line);
@@ -167,13 +167,14 @@ nav {
 /* "Honza" = zelená, "& Eliška" = hnědá */
 .hero-names {
   font-family: 'Euphoria Script', cursive;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 0.95;
+  font-size: 4rem;
+  line-height: 1.1;
+  white-space: nowrap;
   color: var(--forest);
   animation: fadeUp 0.8s ease both;
   margin-top: 1.8rem;
 }
-.hero-names span { display: block; color: var(--earth); }
+.hero-names span { color: var(--earth); }
 
 .hero-divider {
   display: flex; align-items: center; gap: 1rem;
@@ -602,7 +603,7 @@ footer { position: relative; }
 
 /* ══════════  TABLET (901px – 1150px)  ══════════ */
 @media (max-width: 900px) {
-  nav { padding: 0.7rem 1.2rem; }
+  nav { padding: 0.35rem 1.2rem; }
   #back-top { right: 1.8rem; }
 }
 
@@ -621,7 +622,7 @@ footer { position: relative; }
   #back-top { right: 1.8rem; }
   nav {
     justify-content: space-between;
-    padding: 0.55rem 1.1rem;
+    padding: 0.35rem 1.1rem;
   }
   .nav-brand { display: block; }
   .nav-hamburger { display: flex; }
@@ -798,7 +799,7 @@ footer { position: relative; }
     <hr class="hero-rule">
 
     <h1 class="hero-names">
-      Eliška<span>&amp; Honza</span>
+      Eliška <span>&amp; Honza</span>
     </h1>
 
     <div class="hero-divider">
