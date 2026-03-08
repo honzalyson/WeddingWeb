@@ -157,7 +157,7 @@ nav {
 .hero-content {
   background: rgba(250,246,238,0.8);
   backdrop-filter: blur(8px);
-  padding: 0rem 3.5rem;
+  padding: 0 clamp(1.5rem, 5vw, 3.5rem);
   border-radius: 15px;
   max-width: 540px;
   width: 100%;
@@ -657,7 +657,7 @@ footer { position: relative; }
   .section { padding: 1.5rem; }
 
   /* Hero */
-  .hero-content { padding: 0 1.5rem; }
+
   .hero-meta-sep { display: none; }
   .hero-meta { gap: 1.4rem; }
   .hero-countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; }
