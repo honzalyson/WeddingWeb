@@ -46,7 +46,7 @@ body {
 /* ══════════  NAV  ══════════ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; justify-content: flex-end; align-items: center;
+  display: flex; justify-content: center; align-items: center;
   padding: 0.35rem 1.6rem;
   background: rgba(250,246,238,0.97);
   backdrop-filter: blur(14px);
@@ -175,7 +175,7 @@ nav {
   margin-top: 1.8rem;
   margin-bottom: 2rem;
 }
-.hero-names span { color: var(--earth); }
+.hero-names span { color: var(--gold); }
 
 .hero-divider {
   display: flex; align-items: center; gap: 1rem;
@@ -195,6 +195,7 @@ nav {
   animation: fadeUp 0.8s 0.25s ease both;
   margin-bottom: 0;
 }
+.hero-meta:not(:has(~ .hero-meta)) { margin-bottom: 1.8rem; }
 .hero-meta-item { text-align: center; }
 .hero-meta-label {
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
@@ -207,12 +208,19 @@ nav {
 }
 .hero-meta-sep { display: none; }
 
-/* mini countdown — 50% bigger */
+/* countdown strip — separate panel below hero */
+.countdown-strip {
+  display: flex;
+  justify-content: center;
+  padding: 1.2rem 2rem;
+  background: rgba(201,160,96,0.05);
+  border-top: 1px solid rgba(201,160,96,0.18);
+  border-bottom: 1px solid rgba(201,160,96,0.18);
+  margin: 3rem 0;
+}
+
 .hero-countdown {
   display: flex; align-items: baseline; gap: 0.5rem; justify-content: center; flex-wrap: nowrap;
-  animation: fadeUp 0.8s 0.38s ease both;
-  margin-top: 2rem;
-  margin-bottom: 1.8rem;
 }
 .hcd-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
 .hcd-num {
@@ -222,11 +230,11 @@ nav {
 }
 .hcd-label {
   font-size: 0.6rem; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--tan); margin-top: 0.1rem;
+  color: var(--earth); margin-top: 0.1rem;
 }
 .hcd-sep {
   font-family: 'EB Garamond', serif;
-  font-size: 1.6rem; color: var(--straw); opacity: 0.7;
+  font-size: 1.6rem; color: var(--straw);
   padding-bottom: 0.25rem;
 }
 
@@ -571,10 +579,11 @@ footer { position: relative; }
   display: none;
   font-family: 'Euphoria Script', cursive;
   font-size: 1.4rem;
-  color: var(--earth);
   text-decoration: none;
   flex-shrink: 0;
 }
+.nav-brand-letter { color: var(--forest); }
+.nav-brand-amp { color: var(--gold); }
 
 /* ══════════  HAMBURGER  ══════════ */
 .nav-hamburger {
@@ -662,12 +671,6 @@ footer { position: relative; }
 
   .hero-meta-sep { display: none; }
   .hero-meta { gap: 1.4rem; }
-  .hero-countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; }
-  .hcd-sep { display: none; }
-  .hcd-item { border-right: 1px solid rgba(223,200,152,0.4); padding: 0.2rem 0.3rem; }
-  .hcd-item:last-child { border-right: none; }
-  .hcd-num { font-size: clamp(1.3rem, 6vw, 1.8rem); }
-  .hcd-label { font-size: 0.5rem; letter-spacing: 0.12em; }
 }
 </style>
 </head>
@@ -675,7 +678,7 @@ footer { position: relative; }
 
 <!-- ══════════════════  NAV  ══════════════════ -->
 <nav id="nav">
-  <a class="nav-brand" href="#">E &amp; H</a>
+  <a class="nav-brand" href="#"><span class="nav-brand-letter">E</span> <span class="nav-brand-amp">&amp;</span> <span class="nav-brand-letter">H</span></a>
   <div class="nav-tiles" id="nav-menu">
 
     <!-- Doprava -->
@@ -801,7 +804,7 @@ footer { position: relative; }
     <hr class="hero-rule">
 
     <h1 class="hero-names">
-      Eliška <span>&amp; Honza</span>
+      Eliška <span>&amp;</span> Honza
     </h1>
 
     <div class="hero-meta">
@@ -830,34 +833,37 @@ footer { position: relative; }
       </div>
     </div>
 
-    <div class="hero-countdown">
-      <div class="hcd-item">
-        <span class="hcd-num" id="cd-days">--</span>
-        <span class="hcd-label">Dní</span>
-      </div>
-      <span class="hcd-sep">·</span>
-      <div class="hcd-item">
-        <span class="hcd-num" id="cd-hours">--</span>
-        <span class="hcd-label">Hodin</span>
-      </div>
-      <span class="hcd-sep">·</span>
-      <div class="hcd-item">
-        <span class="hcd-num" id="cd-mins">--</span>
-        <span class="hcd-label">Minut</span>
-      </div>
-      <span class="hcd-sep">·</span>
-      <div class="hcd-item">
-        <span class="hcd-num" id="cd-secs">--</span>
-        <span class="hcd-label">Sekund</span>
-      </div>
-    </div>
-
     <hr class="hero-rule">
     <div class="hero-bottom"><img src="img/hero_bottom.png" alt=""></div>
 
   </div><!-- /.hero-content -->
 
 </section>
+
+<!-- ══════  COUNTDOWN STRIP  ══════ -->
+<div class="countdown-strip">
+  <div class="hero-countdown">
+    <div class="hcd-item">
+      <span class="hcd-num" id="cd-days">--</span>
+      <span class="hcd-label">Dní</span>
+    </div>
+    <span class="hcd-sep">·</span>
+    <div class="hcd-item">
+      <span class="hcd-num" id="cd-hours">--</span>
+      <span class="hcd-label">Hodin</span>
+    </div>
+    <span class="hcd-sep">·</span>
+    <div class="hcd-item">
+      <span class="hcd-num" id="cd-mins">--</span>
+      <span class="hcd-label">Minut</span>
+    </div>
+    <span class="hcd-sep">·</span>
+    <div class="hcd-item">
+      <span class="hcd-num" id="cd-secs">--</span>
+      <span class="hcd-label">Sekund</span>
+    </div>
+  </div>
+</div>
 
 
 <!-- ══════  01 — DOPRAVA  ══════ -->
