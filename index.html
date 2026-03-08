@@ -173,12 +173,12 @@ nav {
   color: var(--forest);
   animation: fadeUp 0.8s ease both;
   margin-top: 1.8rem;
+  margin-bottom: 2rem;
 }
 .hero-names span { color: var(--earth); }
 
 .hero-divider {
   display: flex; align-items: center; gap: 1rem;
-  margin: 1.8rem 0;
   width: 100%;
   animation: fadeUp 0.8s 0.15s ease both;
 }
@@ -193,16 +193,17 @@ nav {
   gap: 1rem;
   width: 100%;
   animation: fadeUp 0.8s 0.25s ease both;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 .hero-meta-item { text-align: center; }
 .hero-meta-label {
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--tan); margin-bottom: 0.3rem;
+  color: var(--tan); margin-bottom: 0.2rem;
 }
 .hero-meta-value {
   font-family: 'Euphoria Script', cursive;
   font-size: 1.4rem; color: var(--bark);
+  margin-top: 0.5rem;
 }
 .hero-meta-sep { display: none; }
 
@@ -210,6 +211,7 @@ nav {
 .hero-countdown {
   display: flex; align-items: baseline; gap: 0.5rem; justify-content: center; flex-wrap: nowrap;
   animation: fadeUp 0.8s 0.38s ease both;
+  margin-top: 2rem;
   margin-bottom: 1.8rem;
 }
 .hcd-item { text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -802,6 +804,16 @@ footer { position: relative; }
       Eliška <span>&amp; Honza</span>
     </h1>
 
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <p class="hero-meta-label">Datum</p>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <p class="hero-meta-label">Místo</p>
+      </div>
+    </div>
+
     <div class="hero-divider">
       <div class="hero-divider-line"></div>
       <span class="hero-divider-gem"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -810,12 +822,10 @@ footer { position: relative; }
 
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <p class="hero-meta-label">Datum</p>
-        <p class="hero-meta-value">8. 8. 2026</p>
+        <p class="hero-meta-value">8.8.2026</p>
       </div>
       <div class="hero-meta-sep"></div>
       <div class="hero-meta-item">
-        <p class="hero-meta-label">Místo</p>
         <p class="hero-meta-value">Trojhouse, Trojanovice</p>
       </div>
     </div>
