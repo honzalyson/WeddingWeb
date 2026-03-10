@@ -284,16 +284,21 @@ nav {
 .sec-title::after {
   content: '';
   display: block;
-  height: 1.5rem;
+  width: min(calc(641 / 89 * 1.5rem), 100%);
+  height: auto;
   aspect-ratio: 641 / 89;
-  background: url('img/section_side1.png') no-repeat center / contain;
 }
 .sec-title::before { justify-self: end; }
 .sec-title::after { justify-self: start; transform: scaleX(-1) scaleY(-1); }
+#datum .sec-title::before,
+#datum .sec-title::after {
+  background: url('img/section_side1.png') no-repeat center / contain;
+}
 #ubytovani .sec-title::before,
 #ubytovani .sec-title::after {
-  background-image: url('img/section_side2.png');
+  background: url('img/section_side2.png') no-repeat center / contain;
   aspect-ratio: 535 / 128;
+  width: min(calc(535 / 128 * 1.5rem), 100%);
 }
 
 .placeholder {
