@@ -41,6 +41,7 @@
   --nav-sep:      rgba(160,128,80,0.10);
   /* ── Layout ── */
   --nav-height: 36px;
+  --nav-bar-height: calc(var(--nav-height) + 0.7rem); /* tile + 2×0.35rem padding */
   /* ── Dress-code palette ── */
   --dc-1: #fce8ee;
   --dc-2: #f2b8cc;
@@ -270,6 +271,7 @@ nav {
   position: relative; overflow: visible;
   padding: 0 clamp(1.2rem, 2.5vw, 2.5rem);
   background-color: var(--cream);
+  scroll-margin-top: calc(var(--nav-bar-height) + 0.5rem);
 }
 
 .sec-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 20; }
