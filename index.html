@@ -306,7 +306,9 @@ nav {
   height: 2rem;
   width: auto;
 }
-.sec-divider.flip img { transform: scaleX(-1); }
+.sec-divider.flip img:not(.sec-leaf) { transform: scaleX(-1); }
+.sec-divider img.sec-leaf { height: 1.5rem; }
+.sec-divider .sec-leaf:first-child { transform: scaleX(-1); }
 
 
 /* ══════════  DATUM & MÍSTO  ══════════ */
@@ -829,7 +831,7 @@ footer { position: relative; }
   <p>Najdete zde podrobné informace týkající se průběhu celého dne a veškerých možností, které hostům nabízíme. Stránky mohou být aktualizovány, a proto je doporučujeme navštěvovat průběžně pro nejaktuálnější informace.</p>
 </div>
 
-<div class="sec-divider"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  01 — DOPRAVA  ══════ -->
 <section class="section" id="datum">
@@ -891,7 +893,7 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  02 — UBYTOVÁNÍ  ══════ -->
 <section class="section" id="ubytovani">
@@ -916,7 +918,7 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  03 — PROGRAM  ══════ -->
 <section class="section" id="program">
@@ -1005,7 +1007,7 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  04 — DRESS CODE  ══════ -->
 <section class="section" id="dresscode">
@@ -1029,7 +1031,7 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  05 — DARY  ══════ -->
 <section class="section" id="dary">
@@ -1045,7 +1047,7 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip"><img src="img/flower.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  06 — DALŠÍ INFORMACE  ══════ -->
 <section class="section" id="dalsi-informace">
