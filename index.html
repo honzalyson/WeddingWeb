@@ -1129,6 +1129,14 @@ footer { position: relative; }
     });
   });
 
+  // Fix hash scroll on page load (scroll-margin-top not applied before layout settles)
+  if (location.hash) {
+    window.addEventListener('load', () => {
+      const target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView();
+    });
+  }
+
   // Reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });
