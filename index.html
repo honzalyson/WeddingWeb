@@ -1133,7 +1133,10 @@ footer { position: relative; }
   if (location.hash) {
     window.addEventListener('load', () => {
       const target = document.querySelector(location.hash);
-      if (target) target.scrollIntoView();
+      if (target) {
+        const navHeight = document.getElementById('nav').offsetHeight;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'instant' });
+      }
     });
   }
 
