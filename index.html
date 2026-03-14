@@ -93,6 +93,9 @@ nav {
   text-decoration: none;
   border-radius: 0;
   border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
   height: var(--nav-height);
   transition: none;
   white-space: nowrap;
@@ -692,44 +695,44 @@ footer { position: relative; }
   <div class="nav-tiles" id="nav-menu">
 
     <!-- Doprava -->
-    <a class="nav-tile" href="#datum">
+    <button class="nav-tile" data-target="datum">
       <span class="nav-tile-label">Doprava</span>
-    </a>
+    </button>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
     <!-- Ubytování -->
-    <a class="nav-tile" href="#ubytovani">
+    <button class="nav-tile" data-target="ubytovani">
       <span class="nav-tile-label">Ubytování</span>
-    </a>
+    </button>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
     <!-- Program -->
-    <a class="nav-tile" href="#program">
+    <button class="nav-tile" data-target="program">
       <span class="nav-tile-label">Program</span>
-    </a>
+    </button>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
     <!-- Dress code -->
-    <a class="nav-tile" href="#dresscode">
+    <button class="nav-tile" data-target="dresscode">
       <span class="nav-tile-label">Dress code</span>
-    </a>
+    </button>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
     <!-- Dary -->
-    <a class="nav-tile" href="#dary">
+    <button class="nav-tile" data-target="dary">
       <span class="nav-tile-label">Dary</span>
-    </a>
+    </button>
 
     <span class="nav-heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
 
     <!-- Ostatní -->
-    <a class="nav-tile" href="#dalsi-informace">
+    <button class="nav-tile" data-target="dalsi-informace">
       <span class="nav-tile-label">Ostatní</span>
-    </a>
+    </button>
 
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
@@ -1099,6 +1102,14 @@ footer { position: relative; }
     backTop.classList.toggle('visible', y > 300);
   }, {passive: true});
 
+  // Nav scroll helper
+  function scrollToTarget(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navHeight = document.getElementById('nav').offsetHeight;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
+  }
+
   // Hamburger menu
   const hamburger = document.getElementById('nav-hamburger');
   const navMenu = document.getElementById('nav-menu');
@@ -1107,12 +1118,27 @@ footer { position: relative; }
     hamburger.classList.toggle('open', open);
     hamburger.setAttribute('aria-expanded', open);
   });
-  navMenu.querySelectorAll('.nav-tile').forEach(link => {
-    link.addEventListener('click', () => {
+  navMenu.querySelectorAll('.nav-tile').forEach(btn => {
+    btn.addEventListener('click', () => {
       navMenu.classList.remove('open');
       hamburger.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
+      scrollToTarget(btn.dataset.target);
     });
+  });
+
+  // Persist scroll position across refreshes (no hash in URL)
+  let scrollSaveTimer;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = setTimeout(() => {
+      sessionStorage.setItem('scrollY', window.scrollY);
+    }, 100);
+  }, { passive: true });
+
+  window.addEventListener('load', () => {
+    const saved = sessionStorage.getItem('scrollY');
+    if (saved !== null) window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' });
   });
 
   // Reveal
