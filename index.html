@@ -267,6 +267,7 @@ nav {
   position: relative; overflow: visible;
   padding: 0 clamp(1.2rem, 2.5vw, 2.5rem);
   background-color: var(--cream);
+  scroll-margin-top: calc(var(--nav-bar-height) + 2rem);
 }
 
 .sec-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 20; }
@@ -812,10 +813,10 @@ footer { position: relative; }
   <p>Najdete zde podrobné informace týkající se průběhu celého dne a veškerých možností, které hostům nabízíme. Stránky mohou být aktualizovány, a proto je doporučujeme navštěvovat průběžně pro nejaktuálnější informace.</p>
 </div>
 
-<div class="sec-divider" id="datum"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  01 — DOPRAVA  ══════ -->
-<section class="section">
+<section class="section" id="datum">
   <div class="sec-inner">
     <div class="sec-body">
     <div class="reveal">
@@ -874,10 +875,10 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip" id="ubytovani"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  02 — UBYTOVÁNÍ  ══════ -->
-<section class="section">
+<section class="section" id="ubytovani">
   <div class="sec-inner">
     <div class="sec-body">
     <div class="reveal">
@@ -899,10 +900,10 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider" id="program"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  03 — PROGRAM  ══════ -->
-<section class="section">
+<section class="section" id="program">
   <div class="sec-inner">
     <div class="sec-body">
     <div class="reveal">
@@ -988,10 +989,10 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip" id="dresscode"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  04 — DRESS CODE  ══════ -->
-<section class="section">
+<section class="section" id="dresscode">
   <div class="sec-inner">
     <div class="sec-body">
     <div class="reveal">
@@ -1019,10 +1020,10 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider" id="dary"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  05 — DARY  ══════ -->
-<section class="section">
+<section class="section" id="dary">
   <div class="sec-inner">
     <div class="sec-body">
       <div class="reveal">
@@ -1035,10 +1036,10 @@ footer { position: relative; }
   </div>
 </section>
 
-<div class="sec-divider flip" id="dalsi-informace"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
+<div class="sec-divider flip"><img class="sec-leaf" src="img/leafs.png" alt=""><img src="img/flower.png" alt=""><img class="sec-leaf" src="img/leafs.png" alt=""></div>
 
 <!-- ══════  06 — DALŠÍ INFORMACE  ══════ -->
-<section class="section">
+<section class="section" id="dalsi-informace">
   <div class="sec-inner">
     <div class="sec-body">
     <div class="reveal">
@@ -1105,9 +1106,7 @@ footer { position: relative; }
   // Nav scroll helper
   function scrollToTarget(id) {
     const el = document.getElementById(id);
-    if (!el) return;
-    const navHeight = document.getElementById('nav').offsetHeight;
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navHeight, behavior: 'smooth' });
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   // Hamburger menu
