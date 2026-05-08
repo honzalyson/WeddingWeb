@@ -372,6 +372,45 @@ nav {
   background: var(--cream-dark);
   border-radius: 0 4px 4px 0;
 }
+.citation {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  margin-top: 1.0rem;
+  text-align: justify;
+  padding: 0 0rem;
+}
+.citation::before {
+  content: '\201E';
+  color: var(--gold);
+  font-style: normal;
+  margin-right: 0.1em;
+}
+.citation::after {
+  content: '\201C';
+  color: var(--gold);
+  font-style: normal;
+  margin-left: 0.1em;
+}
+.citation-source {
+  display: block;
+  font-family: 'EB Garamond', serif;
+  font-size: 0.78rem;
+  font-style: normal;
+  color: var(--earth);
+  margin-top: 0.4rem;
+  text-align: right;
+}
+.citation-source::before {
+  content: '— ';
+}
+.citation-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--gold);
+}
+.citation-source a:hover { color: var(--gold); }
 .subsec-list {
   font-family: 'EB Garamond', serif;
   font-size: 1.05rem; line-height: 1.8; color: var(--text);
@@ -1014,7 +1053,23 @@ footer { position: relative; }
           <span class="dc-swatch" style="background: linear-gradient(to right, transparent 50%, #6D4124 50%), url('img/dc4.jpeg') center / cover;"></span>
         </div>
       </div>
-      <p class="subsec-text">... na večer můžete zvolit pohodlnější "párty" oděv.<br>Při výběru obuvi pamatujte na to, že svatba bude probíhat i na travnatých a kamenitých plochách.</p>
+      <p class="subsec-text">... na večer můžete zvolit pohodlnější "párty" oděv. Při výběru obuvi pamatujte na to, že svatba bude probíhat i na travnatých a kamenitých plochách. 
+        Inspirovat se můžete například vybranými styly, uvedenými níže.</p>
+    <div>
+      <h2 class="subsec-title">Summer chic</h2>
+      <blockquote class="citation">
+          Tento dress code se stále více prosazuje na svatbách, kdy ženy oblékají elegantní letní šaty nebo letní kostýmek. Žena může sáhnout i po šatech a sukních v boho stylu. Co se týče šperků a doplňků, kreativitě se v tomto případě meze nekladou. Sluneční brýle, klobouk, nebo třeba lehký letní šál skvěle doladí outfit do osobitého stylu.
+          <br><br>
+          Pro muže je vhodný elegantní letní oblek z bavlny nebo lnu, kalhoty chinos v kombinaci s hezkou košilí a sportovním sakem. I muži mohou svůj oděv doplnit o sluneční brýle nebo třeba klobouk.
+      </blockquote>
+      <cite class="citation-source"><a href="https://www.spongr.cz/blog/dress-code-znate-druhy-kodexu-oblekani/#summer-chic" target="_blank" rel="noopener">spongr.cz</a></cite>
+    </div> 
+    <div>
+      <h2 class="subsec-title">Cocktail</h2>
+      <blockquote class="citation">
+        Jak už název napovídá, tento styl oblékání je vhodný na párty a svatby. Pro událost po 18. hodině se pro muže hodí tmavý společenský oblek nebo smoking. Jedná-li se o méně formální příležitost, je vhodný i světlý oblek. Dámy zazáří v koktejlových šatech doplněné lodičkami nebo balerínami a malou kabelkou. Pokud se ženy necítí dobře v koktejlových šatech, mohou zvolit kalhotový kostým. Ten by měl být doplněný o výrazné šperky a líčení.        </blockquote>
+      <cite class="citation-source"><a href="https://www.spongr.cz/blog/dress-code-znate-druhy-kodexu-oblekani/#coctail" target="_blank" rel="noopener">spongr.cz</a></cite>
+    </div>    
     </div>
     </div>
   </div>
