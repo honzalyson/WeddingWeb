@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliška & Honza - 8.8.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Euphoria+Script&family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+<link rel="manifest" href="img/favicon/site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="center-panel">
+
+<!-- ══════════════════  HERO  ══════════════════ -->
+<section class="hero reveal">
+
+  <div class="hero-content">
+
+    <div class="hero-top"><img src="img/hero_top.png" alt=""></div>
+    <hr class="hero-rule">
+
+    <h1 class="hero-names">
+      Eliška <span>&amp;</span> Honza
+    </h1>
+
+    <div class="hero-panel">
+      <p class="hero-meta-label">Datum</p>
+      <div></div>
+      <p class="hero-meta-label">Místo</p>
+
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-gem"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+      <div class="hero-divider-line"></div>
+
+      <p class="hero-meta-value">8.8.2026</p>
+      <div></div>
+      <p class="hero-meta-value">Trojhouse, Trojanovice</p>
+    </div>
+
+    <hr class="hero-rule">
+    <div class="hero-bottom"><img src="img/hero_bottom.png" alt=""></div>
+
+  </div><!-- /.hero-content -->
+
+</section>
+
+<div class="welcome reveal">
+  <p>Děkujeme, že jste byli s námi.</p>
+  <p class="media-links">
+    <span class="media-side media-side--left"><a href="#" id="foto-link" class="media-link">FOTO</a></span>
+    <span class="media-sep">|</span>
+    <span class="media-side media-side--right"><a href="https://www.google.com" class="media-link media-link--pending">VIDEO</a></span>
+  </p>
+  <p><a class="old-link" href="original.html">Původní informace</a></p>
+</div>
+
+<!-- ══════════════════  FOOTER  ══════════════════ -->
+<footer class="reveal"><div class="footer-ref"></div></footer>
+
+</div><!-- /.center-panel -->
+
+<div id="pw-overlay" class="pw-overlay pw-hidden">
+  <div class="pw-card">
+    <button id="pw-close-x" class="pw-close-x" aria-label="Zavřít">&#x2715;</button>
+    <p class="pw-label">Zadejte heslo</p>
+    <input id="pw-input" type="password" class="pw-input" placeholder="Heslo" />
+    <p id="pw-error" class="pw-error pw-hidden">Nesprávné heslo</p>
+    <div class="pw-actions">
+      <button id="pw-submit" class="pw-btn">Pokračovat</button>
+    </div>
+    <button id="pw-cancel" class="pw-btn pw-btn--outline">Zrušit</button>
+  </div>
+</div>
+
+<script>
+  // Reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<script>
+(function () {
+  const PAYLOAD = {
+    salt: '5yDdJrELpxOPlrK9BBPNhg==',
+    iv:   'nkZeOHatbGbVQJck',
+    ct:   'Xxzk46C0t+719WeZC0MEs/FoW+kLsAFSQiNq3sXq0+oLJh4cRC2xtB8HOr2Cr04+I0rtAV36H2V0aUP1rGMF8uInIYdF/wN74G7J4ib0B5JcqV1O+PFBXtsMbkWJEe1Mj/uSD/83fRtpPnWHC6ZVvszBSKh4nE5fjIXlJG69qg=='
+  };
+  const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+  async function tryUnlock(password) {
+    try {
+      const enc = new TextEncoder();
+      const km = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+      const key = await crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt: b64(PAYLOAD.salt), iterations: 300000, hash: 'SHA-256' },
+        km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+      );
+      const dec = await crypto.subtle.decrypt(
+        { name: 'AES-GCM', iv: b64(PAYLOAD.iv) },
+        key, b64(PAYLOAD.ct)
+      );
+      return new TextDecoder().decode(dec);
+    } catch { return null; }
+  }
+
+  const overlay = document.getElementById('pw-overlay');
+  const input   = document.getElementById('pw-input');
+  const error   = document.getElementById('pw-error');
+  const submit  = document.getElementById('pw-submit');
+
+  function closeModal() { overlay.classList.add('pw-hidden'); }
+  function openModal() {
+    overlay.classList.remove('pw-hidden');
+    input.value = '';
+    error.classList.add('pw-hidden');
+    setTimeout(() => input.focus(), 50);
+  }
+
+  document.getElementById('foto-link').addEventListener('click', e => { e.preventDefault(); openModal(); });
+  document.getElementById('pw-close-x').addEventListener('click', closeModal);
+  document.getElementById('pw-cancel').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  async function attempt() {
+    submit.disabled = true;
+    const url = await tryUnlock(input.value.trim());
+    submit.disabled = false;
+    if (url) {
+      closeModal();
+      window.location.href = url;
+    } else {
+      error.classList.remove('pw-hidden');
+      input.select();
+    }
+  }
+
+  submit.addEventListener('click', attempt);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+})();
+</script>
+</body>
+</html>
