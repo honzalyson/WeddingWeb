@@ -13,6 +13,19 @@
 </head>
 <body>
 
+<!-- ══════════════════  NAV  ══════════════════ -->
+<nav id="nav">
+  <a class="nav-brand" href="#"><span class="nav-brand-letter">E</span> <span class="nav-brand-amp">&amp;</span> <span class="nav-brand-letter">H</span></a>
+  <span class="nav-height-spacer" aria-hidden="true"></span>
+  <div class="nav-tiles nav-tiles--index" id="nav-menu">
+    <a class="nav-tile" href="original.html"><span class="nav-tile-label">Stránka s informacemi</span></a>
+  </div>
+  <a class="nav-ext-link" href="original.html">Stránka s informacemi</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
 <div class="center-panel">
 
 <!-- ══════════════════  HERO  ══════════════════ -->
@@ -55,7 +68,6 @@
     <span class="media-sep">|</span>
     <span class="media-side media-side--right"><a href="https://www.google.com" class="media-link media-link--pending">VIDEO</a></span>
   </p>
-  <p><a class="old-link" href="original.html">Původní informace</a></p>
 </div>
 
 <!-- ══════════════════  FOOTER  ══════════════════ -->
@@ -77,6 +89,15 @@
 </div>
 
 <script>
+  // Hamburger
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu   = document.getElementById('nav-menu');
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
   // Reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); io.unobserve(e.target); } });

@@ -65,6 +65,23 @@ nav {
   display: flex; gap: 0; align-items: center;
 }
 
+/* Desktop: right-aligned nav external link */
+.nav-ext-link {
+  position: absolute;
+  right: 1.6rem;
+  font-family: 'Euphoria Script', cursive;
+  font-size: 1.44rem;
+  color: var(--mid);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-ext-link:hover { color: var(--earth); font-weight: 700; }
+
+/* Desktop: hide mobile-only nav elements */
+.nav-tiles--index { display: none; }
+.nav-height-spacer { height: var(--nav-height); width: 0; overflow: hidden; flex-shrink: 0; pointer-events: none; }
+.nav-tile.nav-tile--mobile-only { display: none; border-bottom: none; }
+
 .nav-heart {
   font-size: 0.844rem;
   color: var(--tan);
@@ -795,21 +812,25 @@ footer { position: relative; }
 
 /* ══════════  MOBILE (≤1000px)  ══════════ */
 @media (max-width: 1000px) {
-  .hero {
-    background-attachment: scroll;
-  }
+  .hero { background-attachment: scroll; }
   .center-panel { box-shadow: none; }
   .datum-cols { flex-direction: column; }
   .datum-map { flex: none; height: 220px; }
   .datum-map iframe { height: 220px; }
   .datum-col-info { flex-direction: row; align-items: flex-start; gap: 1rem; justify-content: space-between; }
   .datum-col-info .map-nav-links { margin-top: 0; padding-top: 0; flex-direction: row; gap: 0.75rem; align-self: flex-end; }
-
   #back-top { right: 1.8rem; }
+  .section { padding: 0 1.5rem; }
+}
+
+/* ══════════  NAV HAMBURGER (≤1200px)  ══════════ */
+@media (max-width: 1200px) {
   nav {
     justify-content: space-between;
     padding: 0.35rem 1.1rem;
   }
+  .nav-ext-link { display: none; }
+  .nav-tile.nav-tile--mobile-only { display: flex; }
   .nav-brand { display: block; }
   .nav-hamburger { display: flex; }
 
@@ -837,11 +858,6 @@ footer { position: relative; }
   .nav-tile:last-of-type { border-bottom: none; }
   .nav-tile::after { left: var(--nav-height); right: 0; bottom: 9px; }
   .nav-tile-label { font-size: 1.5rem; }
-
-  .section { padding: 0 1.5rem; }
-
-  /* Hero */
-
 }
 
 /* ══════  THUMBNAIL / LIGHTBOX  ══════ */
